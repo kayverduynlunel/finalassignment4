@@ -158,7 +158,8 @@ datasummary(growth +rgdp60 ~ Mean + Median + SD + Min + Max, data = UnrevgrowthS
 **Designated place**: type one or two sentences describing this table of a fellow student below. For example, comment on the mean and median growth of both groups. Then stage, commit and push it to their github repository.
 
  
-TEST
+Ana:
+Kay presents the following two tables which compare countries that have had revolutions (left table/first table) or have not had revolutions (right table/second table). The data is based on average growth rates over 1960-1995 for 65 countries with growth-related variables. In this case, countries with revolutions refer to the annual number of revolutions, insurrections and coup d'etats in that country in the same time span the data is based on. The two tables have each two rows and five variables. The two rows are growth (average annual percentage growth of real GDP from 1960 to 1995) and rgdp (the value of GDP per capita in 1960, converted to 1960 US Dollars.) The five variables or columns are the mean, median, SD, min, and max numbers of growth and rgdp.
  
 
 ### Part 3: Make a table summarizing reressions using modelsummary and kable
