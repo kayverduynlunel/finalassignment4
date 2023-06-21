@@ -1,0 +1,153 @@
+---
+
+title: "| Assignment 4: Collaborating Together\n| Introduction to Applied Data Science\n|
+
+  2022-2023\n"
+
+author: |
+
+  | Ana Sofia Polo Bleher
+
+  | a.s.polobleher@students.uu.nl
+
+  | http://www.github.com/anableher1
+
+date: "June 2023"
+
+output:
+
+  html_document:
+
+    df_print: paged
+
+linkcolor: purple
+
+urlcolor: purple
+
+---
+
+ 
+
+```{r setup, include = FALSE}
+
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, error=TRUE)
+
+```
+
+ 
+
+## Assignment 4: Collaborating Together
+
+ 
+
+### Part 1: Contributing to another student's Github repository
+
+ 
+
+In this assignment, you will create a Github repository, containing this document and the .pdf output, which analyzes a dataset individually using some of the tools we have developed.
+
+ 
+
+This time, make sure to not only put your name and student e-mail in your Rmarkdown header, but also your Github account, as I have done myself.
+
+ 
+
+However, you will also pair up with a class mate and contribute to each others' Github repository. Each student is supposed to contribute to another student's work by writing a short interpretation of 1 or 2 sentences at the designated place (this place is marked with **designated place**) in the other student's assignment.
+
+ 
+
+This interpretation will not be graded, but a Github shows the contributors to a certain repository. This way, we can see whether you have contributed to a repository of a class mate.
+
+ 
+
+**Question 1.1**: Fill in the __github username__ of the class mate to whose repository you have contributed.
+
+ 
+
+kayverduynlunel
+
+ 
+
+### Part 2: Analyzing various linear models
+
+ 
+
+In this part, we will summarize a dataset and create a couple of customized tables. Then, we will compare a couple of linear models to each other, and see which linear model fits the data the best, and yields the most interesting results.
+
+ 
+
+We will use a dataset called `GrowthSW` from the `AER` package. This is a dataset containing 65 observations on 6 variables and investigates the determinants of economic growth. First, we will try to summarize the data using the `modelsummary` package.
+
+ 
+
+```{r, warning=FALSE, message=FALSE}
+
+library(AER)
+
+data(GrowthSW)
+
+```
+
+ 
+
+One of the variables in the dataset is `revolutions`, the number of revolutions, insurrections and coup d'etats in country $i$ from 1965 to 1995.
+
+ 
+
+**Question 2.1**: Using the function `datasummary`, summarize the mean, median, sd, min, and max of the variables `growth`, and `rgdp60` between two groups: countries with `revolutions` equal to 0, and countries with more than 0 revolutions. Call this variable `treat`. Make sure to also write the resulting data set to memory. Hint: you can check some examples [here](https://vincentarelbundock.github.io/modelsummary/articles/datasummary.html#datasummary).
+
+ 
+
+```{r}
+
+library(modelsummary); library(tidyverse)
+
+ 
+
+library(dplyr)
+
+ 
+
+ 
+
+#Add the variable treat to the dataset
+
+ 
+
+GrowthSW <- GrowthSW %>%
+
+  mutate(treat = ifelse(GrowthSW$revolutions > 0, "Revolutionary", "Non-revolutionary"))
+
+ 
+
+#Create separate datasets for revolutionary and non-revolutionary countries
+
+ 
+
+RevGrowthSW <- GrowthSW %>%
+
+  filter(treat == "Revolutionary")
+
+ 
+
+UnrevgrowthSW <- GrowthSW %>%
+
+  filter(treat == "Non-revolutionary")
+
+ 
+
+#Perform the summaries on both groups
+
+ 
+
+datasummary(growth +rgdp60 ~ Mean + Median + SD + Min + Max, data = RevGrowthSW)
+
+ 
+
+datasummary(growth +rgdp60 ~ Mean + Median + SD + Min + Max, data = UnrevgrowthSW)
+
+ 
+
+ 
+
+```
