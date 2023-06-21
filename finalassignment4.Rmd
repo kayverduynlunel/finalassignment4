@@ -7,11 +7,11 @@ title: "| Assignment 4: Collaborating Together\n| Introduction to Applied Data S
 
 author: |
 
-  | Ana Sofia Polo Bleher
+  | Kay Verduyn Lunel
 
-  | a.s.polobleher@students.uu.nl
+  | k.p.m.verduynlunel@students.uu.nl
 
-  | http://www.github.com/anableher1
+  | http://www.github.com/kayverduynlunel
 
 date: "June 2023"
 
@@ -65,7 +65,7 @@ This interpretation will not be graded, but a Github shows the contributors to a
 
  
 
-kayverduynlunel
+anableher1
 
  
 
